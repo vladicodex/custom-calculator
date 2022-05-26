@@ -1,5 +1,7 @@
 var display = document.querySelector("#display");
 var buttons = document.querySelectorAll("input");
+var clicked = false;
+var audio = document.getElementById('my-audio');
 
 buttons.forEach((button) => {
     button.onclick = () => {
@@ -18,3 +20,22 @@ buttons.forEach((button) => {
         }
     };
 });
+
+function darkMode() {
+    var element = document.body;
+    element.classList.toggle("dark-mode");
+  }
+
+function partyMode() {
+    var element = document.body;
+    element.classList.toggle("party-mode");
+
+    if(clicked){
+        audio.pause();
+        clicked = false;
+    } else {
+        audio.currentTime = 0;
+        audio.play();
+        clicked = true;
+    }
+}
